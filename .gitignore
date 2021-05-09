@@ -1,6 +1,6 @@
 # Environments
 .venv
-ENV
+.env
 
 # Cache files
 __pycache__
