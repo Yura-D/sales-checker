@@ -7,13 +7,13 @@ URL = 'https://eva.ua/ua/pr12515/'
 
 
 def convert_price(text):
-    price = text.split()[0]
+    filtered_func = filter(lambda w: w.isdigit() or w in ['.', ','], text)
+    price = ''.join(filtered_func)
     price = price.replace(',', '.')
     return float(price)
 
 
-def get_price(url, path):
-    driver = webdriver.Chrome(executable_path='./chromedriver')
+def get_price(url, path, driver):
     driver.get(url)
     # TODO Change sleep func
     time.sleep(1)
@@ -22,4 +22,6 @@ def get_price(url, path):
 
 
 if __name__ == '__main__':
-    print(get_price(URL, PATH))
+    driver = webdriver.Chrome(executable_path='./chromedriver')
+    print(get_price(URL, PATH, driver))
+    driver.close()
