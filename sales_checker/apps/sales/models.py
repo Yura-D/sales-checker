@@ -6,6 +6,7 @@ class Sale(models.Model):
     name = models.CharField(max_length=255, null=True, blank=True)
     url = models.URLField(max_length=255, null=False, blank=False)
     xpath = models.CharField(max_length=255, null=False, blank=False)
+    enable = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
